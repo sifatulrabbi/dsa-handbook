@@ -53,3 +53,27 @@ func TestInsertAtIthPosition(t *testing.T) {
 		t.Errorf("incorrectly updated, result: %v\n", linkedlists.ConvertSinglyLinkedListToArr(head))
 	}
 }
+
+func TestDeleteHead(t *testing.T) {
+	var (
+		arr  = []int{1, 2, 3, 4, 5, 6, 7, 8}
+		head = linkedlists.FromArrToSinglyLinkedList(arr)
+	)
+	newHead := DeleteHead(head)
+	if newHead.Val != 2 {
+		t.Errorf("failed to remove the head, result: %v\n",
+			linkedlists.ConvertSinglyLinkedListToArr(newHead))
+	}
+}
+
+func TestDeleteTail(t *testing.T) {
+	var (
+		arr  = []int{1, 2, 3, 4, 5, 6, 7, 8}
+		head = linkedlists.FromArrToSinglyLinkedList(arr)
+	)
+	DeleteTail(head)
+	result := linkedlists.ConvertSinglyLinkedListToArr(head)
+	if result[len(result)-1] != 7 {
+		t.Errorf("failed to remove the tail, result: %v\n", result)
+	}
+}
