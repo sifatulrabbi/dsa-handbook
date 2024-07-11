@@ -31,5 +31,14 @@ func InsertAfterNode(n *linkedlists.SinglyLinkedNode, val int) {
 	n.Next = &linkedlists.SinglyLinkedNode{Val: val, Next: next}
 }
 
-func InsertAtithPos(h *linkedlists.SinglyLinkedNode, i int, val int) {
+func InsertAtIthPos(h *linkedlists.SinglyLinkedNode, i int, val int) {
+	idx := 1
+	for curr := h; curr != nil; curr = curr.Next {
+		if idx == i {
+			next := curr.Next
+			curr.Next = &linkedlists.SinglyLinkedNode{Val: val, Next: next}
+			break
+		}
+		idx++
+	}
 }
