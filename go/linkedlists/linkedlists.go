@@ -11,7 +11,7 @@ type DoublyLinkedNode struct {
 	Next *DoublyLinkedNode
 }
 
-func arrToSinglyLinkedList(nums []int) *SinglyLinkedNode {
+func FromArrToSinglyLinkedList(nums []int) *SinglyLinkedNode {
 	var (
 		head                   = SinglyLinkedNode{nums[0], nil}
 		curr *SinglyLinkedNode = &head
@@ -23,7 +23,7 @@ func arrToSinglyLinkedList(nums []int) *SinglyLinkedNode {
 	return &head
 }
 
-func arrToDoublyLinkedList(nums []int) *DoublyLinkedNode {
+func FromArrToDoublyLinkedList(nums []int) *DoublyLinkedNode {
 	var (
 		head                   = DoublyLinkedNode{nums[0], nil, nil}
 		curr *DoublyLinkedNode = &head
@@ -37,4 +37,28 @@ func arrToDoublyLinkedList(nums []int) *DoublyLinkedNode {
 		curr = curr.Next
 	}
 	return &head
+}
+
+func ConvertSinglyLinkedListToArr(head *SinglyLinkedNode) []int {
+	var (
+		arr = []int{}
+		cur = head
+	)
+	for cur != nil {
+		arr = append(arr, cur.Val)
+		cur = cur.Next
+	}
+	return arr
+}
+
+func ConvertDoublyLinkedListToArr(head *DoublyLinkedNode) []int {
+	var (
+		arr = []int{}
+		cur = head
+	)
+	for cur != nil {
+		arr = append(arr, cur.Val)
+		cur = cur.Next
+	}
+	return arr
 }
