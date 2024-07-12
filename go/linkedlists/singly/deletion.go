@@ -21,8 +21,28 @@ func DeleteTail(n *linkedlists.SinglyLinkedNode) {
 	}
 }
 
-func DeleteNode(n *linkedlists.SinglyLinkedNode, val int) {
+func DeleteNode(n *linkedlists.SinglyLinkedNode) {
+	for cur := n; cur.Next != nil; cur = cur.Next {
+		cur.Val = cur.Next.Val
+		if cur.Next.Next == nil {
+			cur.Next = nil
+			break
+		}
+	}
 }
 
-func DeleteAtithPos(n *linkedlists.SinglyLinkedNode, i int, val int) {
+func DeleteAtIthPos(h *linkedlists.SinglyLinkedNode, idx int) {
+	var (
+		curr = h
+		i    = 1
+	)
+	for curr != nil {
+		if i == idx {
+			DeleteNode(curr)
+			break
+		}
+
+		i++
+		curr = curr.Next
+	}
 }
